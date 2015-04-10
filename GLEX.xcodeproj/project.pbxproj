@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A8E64321AD7C3F500975900 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E64301AD7C3F500975900 /* Queue.c */; };
 		4C2A6C881AB5DDC00099D64C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A6C871AB5DDC00099D64C /* main.c */; };
 		4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEE71ABEAEC600B64845 /* polygon.c */; };
 		4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEEA1ABEAEEB00B64845 /* line.c */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2A8E64301AD7C3F500975900 /* Queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
+		2A8E64311AD7C3F500975900 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Queue.h; sourceTree = "<group>"; };
 		4C2A6C841AB5DDC00099D64C /* GLEX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLEX; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2A6C871AB5DDC00099D64C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		4CD4CEE71ABEAEC600B64845 /* polygon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon.c; sourceTree = "<group>"; };
@@ -64,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				4C2A6C871AB5DDC00099D64C /* main.c */,
+				2A8E64301AD7C3F500975900 /* Queue.c */,
+				2A8E64311AD7C3F500975900 /* Queue.h */,
 				4CD4CEE71ABEAEC600B64845 /* polygon.c */,
 				4CD4CEE81ABEAEC600B64845 /* polygon.h */,
 				4CD4CEEA1ABEAEEB00B64845 /* line.c */,
@@ -129,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C2A6C881AB5DDC00099D64C /* main.c in Sources */,
+				2A8E64321AD7C3F500975900 /* Queue.c in Sources */,
 				4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */,
 				4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */,
 			);

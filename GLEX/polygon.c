@@ -59,7 +59,7 @@ void lineSegment(void)
     glFlush();
 }
 
-void draw()
+void draw(void)
 {
     
 }
