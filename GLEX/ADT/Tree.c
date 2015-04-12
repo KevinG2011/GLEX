@@ -26,6 +26,16 @@ size_t treeItemCount(const Tree* ptree)
     return ptree->size;
 }
 
+static bool CompareItem(const Item* i1,const Item* i2)
+{
+    return false;
+}
+
+static void AddNode(const Node* root,const Node* newNode)
+{
+    
+}
+
 Node* MakeNode(const Item *item)
 {
     Node *newNode = (Node*)malloc(sizeof(Node));
