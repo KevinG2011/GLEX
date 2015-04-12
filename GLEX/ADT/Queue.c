@@ -35,14 +35,14 @@ size_t itemCountQueue(Queue* queue)
 
 bool itemEnQueue(Queue* queue,Item item)
 {
-    if (queue == NULL || item == NULL) {
+    if (queue == NULL) {
         return false;
     }
     
     if (queue->count < MAXQUEUE){
 	    Node* node = (Node*)malloc(sizeof(Node));
        	if (node == NULL) {
-        	printf("Unable to allcate memory!\n");
+        	puts("Unable to allcate memory!\n");
             exit(1);
         }
         

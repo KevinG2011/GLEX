@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A8E64321AD7C3F500975900 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E64301AD7C3F500975900 /* Queue.c */; };
+		2A0F51A91ADA4F8500509298 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F51A71ADA4F8500509298 /* Queue.c */; };
+		2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F51AA1ADA4FA100509298 /* Tree.c */; };
 		4C2A6C881AB5DDC00099D64C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A6C871AB5DDC00099D64C /* main.c */; };
 		4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEE71ABEAEC600B64845 /* polygon.c */; };
 		4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEEA1ABEAEEB00B64845 /* line.c */; };
@@ -26,8 +27,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2A8E64301AD7C3F500975900 /* Queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
-		2A8E64311AD7C3F500975900 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Queue.h; sourceTree = "<group>"; };
+		2A0F51A71ADA4F8500509298 /* Queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
+		2A0F51A81ADA4F8500509298 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		2A0F51AA1ADA4FA100509298 /* Tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Tree.c; sourceTree = "<group>"; };
+		2A0F51AB1ADA4FA100509298 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
 		4C2A6C841AB5DDC00099D64C /* GLEX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLEX; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2A6C871AB5DDC00099D64C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		4CD4CEE71ABEAEC600B64845 /* polygon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon.c; sourceTree = "<group>"; };
@@ -47,6 +50,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A0F51A61ADA4F8500509298 /* ADT */ = {
+			isa = PBXGroup;
+			children = (
+				2A0F51A71ADA4F8500509298 /* Queue.c */,
+				2A0F51A81ADA4F8500509298 /* Queue.h */,
+				2A0F51AA1ADA4FA100509298 /* Tree.c */,
+				2A0F51AB1ADA4FA100509298 /* Tree.h */,
+			);
+			path = ADT;
+			sourceTree = "<group>";
+		};
 		4C2A6C7B1AB5DDC00099D64C = {
 			isa = PBXGroup;
 			children = (
@@ -66,9 +80,8 @@
 		4C2A6C861AB5DDC00099D64C /* GLEX */ = {
 			isa = PBXGroup;
 			children = (
+				2A0F51A61ADA4F8500509298 /* ADT */,
 				4C2A6C871AB5DDC00099D64C /* main.c */,
-				2A8E64301AD7C3F500975900 /* Queue.c */,
-				2A8E64311AD7C3F500975900 /* Queue.h */,
 				4CD4CEE71ABEAEC600B64845 /* polygon.c */,
 				4CD4CEE81ABEAEC600B64845 /* polygon.h */,
 				4CD4CEEA1ABEAEEB00B64845 /* line.c */,
@@ -133,8 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */,
 				4C2A6C881AB5DDC00099D64C /* main.c in Sources */,
-				2A8E64321AD7C3F500975900 /* Queue.c in Sources */,
+				2A0F51A91ADA4F8500509298 /* Queue.c in Sources */,
 				4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */,
 				4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */,
 			);
@@ -176,7 +190,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -211,7 +225,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
