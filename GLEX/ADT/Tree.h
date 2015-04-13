@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAXITEMS 10
 
@@ -35,10 +36,10 @@ void treeInit(Tree* ptree);
 bool treeIsEmpty(const Tree* ptree);
 bool treeIsFull(const Tree* ptree);
 size_t treeItemCount(const Tree* ptree);
-bool treeItemIn(const Tree* ptree,Item *item);
+bool treeItemIn(const Tree* ptree,const Item *item);
 bool treeAddItem(Tree* ptree,const Item *item);
 bool treeDeleteItem(Tree* ptree,const Item *item);
-void Traverse(const Tree* ptree,void (*pfunc)(Item item));
+void treeTraverse(const Tree* ptree,void (*pfunc)(Item item));
 void treeDeleteAll(Tree* ptree);
 
 
