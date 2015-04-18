@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <locale.h>
 #define MAXITEMS 10
 
 typedef struct item {

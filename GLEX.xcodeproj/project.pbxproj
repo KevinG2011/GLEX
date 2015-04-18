@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A0F51A91ADA4F8500509298 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F51A71ADA4F8500509298 /* Queue.c */; };
 		2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F51AA1ADA4FA100509298 /* Tree.c */; };
+		2AAB177C1AE2382200692079 /* alarm.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AAB177A1AE2382200692079 /* alarm.c */; };
 		4C2A6C881AB5DDC00099D64C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A6C871AB5DDC00099D64C /* main.c */; };
 		4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEE71ABEAEC600B64845 /* polygon.c */; };
 		4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEEA1ABEAEEB00B64845 /* line.c */; };
@@ -31,6 +32,8 @@
 		2A0F51A81ADA4F8500509298 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		2A0F51AA1ADA4FA100509298 /* Tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Tree.c; sourceTree = "<group>"; };
 		2A0F51AB1ADA4FA100509298 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		2AAB177A1AE2382200692079 /* alarm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alarm.c; sourceTree = "<group>"; };
+		2AAB177B1AE2382200692079 /* alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm.h; sourceTree = "<group>"; };
 		4C2A6C841AB5DDC00099D64C /* GLEX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLEX; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2A6C871AB5DDC00099D64C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		4CD4CEE71ABEAEC600B64845 /* polygon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon.c; sourceTree = "<group>"; };
@@ -61,6 +64,15 @@
 			path = ADT;
 			sourceTree = "<group>";
 		};
+		2AAB17791AE237E800692079 /* Thread */ = {
+			isa = PBXGroup;
+			children = (
+				2AAB177A1AE2382200692079 /* alarm.c */,
+				2AAB177B1AE2382200692079 /* alarm.h */,
+			);
+			path = Thread;
+			sourceTree = "<group>";
+		};
 		4C2A6C7B1AB5DDC00099D64C = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				2A0F51A61ADA4F8500509298 /* ADT */,
+				2AAB17791AE237E800692079 /* Thread */,
 				4C2A6C871AB5DDC00099D64C /* main.c */,
 				4CD4CEE71ABEAEC600B64845 /* polygon.c */,
 				4CD4CEE81ABEAEC600B64845 /* polygon.h */,
@@ -149,6 +162,7 @@
 				2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */,
 				4C2A6C881AB5DDC00099D64C /* main.c in Sources */,
 				2A0F51A91ADA4F8500509298 /* Queue.c in Sources */,
+				2AAB177C1AE2382200692079 /* alarm.c in Sources */,
 				4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */,
 				4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */,
 			);

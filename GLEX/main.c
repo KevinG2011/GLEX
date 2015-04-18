@@ -7,27 +7,52 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <GLUT/GLUT.h>
 #include "line.h"
 #include "Queue.h"
+#include "alarm.h"
 
-GLsizei winWidth = 600, winHeight = 500;
-
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-//    glutInit(&argc, argv);
-//    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-//    glutInitWindowPosition(1024, 100);
-//    glutInitWindowSize(winWidth, winHeight);
-//    glutCreateWindow("An Example OpenGL Program");
+int threadMain(int argc,const char* argv[])
+{
+    int status;
+    char line[128];
+    Alarm *alarm;
+    pthread_t thread;
     
-//    drawline();
-//    drawBarChart();
+    while (1) {
+        printf("Alarm> ");
+        if (fgets(line, sizeof(line), stdin) == NULL) continue;
+        if (strlen(line) <= 1) continue;
+        
+        alarm = (Alarm*)malloc(sizeof(Alarm));
+        if (alarm == NULL) {
+            exit(EXIT_FAILURE);
+        }
+        /*
+         *	Parse input line into seconds (%d) and a message
+         *	(%64[^\n]),consisting of up to 64 characters
+         *	separated from the seconds by whitespace.
+         */
+        if (sscanf(line,"%d %64[^\n]",&alarm->seconds,alarm->message) < 2) {
+            fprintf(stderr, "Bad command\n");
+            free(alarm);
+        }
+        else
+        {
+            status = pthread_create(&thread, NULL,alarm_thread, alarm);
+            if (status != 0) {
+                fprintf(stderr, "Create alarm thread");
+            }
+        }
+    }
     
-//    glutMainLoop();
+    return 0;
+}
 
+int queueMain(int argc,const char* argv[])
+{
     Queue queue;
     Item tmp;
     char ch;
@@ -59,3 +84,43 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
+
+GLsizei winWidth = 600, winHeight = 500;
+
+int glMain(int argc,const char* argv[])
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowPosition(1024, 100);
+    glutInitWindowSize(winWidth, winHeight);
+    glutCreateWindow("An Example OpenGL Program");
+    
+    drawline();
+    drawBarChart();
+    
+    glutMainLoop();
+	
+    return 0;
+}
+
+int main(int argc, const char * argv[]) {
+    int ret;
+//    ret = glMain(argc, argv);
+//    ret = queueMain(argc, argv);
+    ret = threadMain(argc, argv);
+    
+    return ret;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
