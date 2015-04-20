@@ -34,6 +34,7 @@
 		2A0F51AB1ADA4FA100509298 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
 		2AAB177A1AE2382200692079 /* alarm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alarm.c; sourceTree = "<group>"; };
 		2AAB177B1AE2382200692079 /* alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm.h; sourceTree = "<group>"; };
+		2AF23E8D1AE4CAF7005EF223 /* errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errors.h; sourceTree = "<group>"; };
 		4C2A6C841AB5DDC00099D64C /* GLEX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GLEX; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2A6C871AB5DDC00099D64C /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		4CD4CEE71ABEAEC600B64845 /* polygon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = polygon.c; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 				2A0F51A61ADA4F8500509298 /* ADT */,
 				2AAB17791AE237E800692079 /* Thread */,
 				4C2A6C871AB5DDC00099D64C /* main.c */,
+				2AF23E8D1AE4CAF7005EF223 /* errors.h */,
 				4CD4CEE71ABEAEC600B64845 /* polygon.c */,
 				4CD4CEE81ABEAEC600B64845 /* polygon.h */,
 				4CD4CEEA1ABEAEEB00B64845 /* line.c */,

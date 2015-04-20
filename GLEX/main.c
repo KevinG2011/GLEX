@@ -7,6 +7,9 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
+#include "errors.h"
+
 #include <string.h>
 
 #include <GLUT/GLUT.h>
@@ -103,12 +106,34 @@ int glMain(int argc,const char* argv[])
     return 0;
 }
 
+void* thread_routine(void * arg)
+{
+    sleep(3);
+    return arg;
+}
+
+int threadJoinMain(int argc, const char * argv[]) {
+    pthread_t thread;
+    void *thread_result;
+    int status = pthread_create(&thread, NULL, thread_routine, NULL);
+    if (status != 0) {
+        err_abort(status, "Create thread");
+    }
+    
+    status = pthread_join(thread, &thread_result);
+    if (status != 0) {
+        err_abort(status, "Join thread");
+    }
+	
+    return thread_result == NULL ? 0 : 1;
+}
+
 int main(int argc, const char * argv[]) {
-    int ret;
+    int ret = 0;
 //    ret = glMain(argc, argv);
 //    ret = queueMain(argc, argv);
-    ret = threadMain(argc, argv);
-    
+//    ret = threadMain(argc, argv);
+    ret = threadJoinMain(argc,argv);
     return ret;
 }
 
