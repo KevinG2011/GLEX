@@ -17,6 +17,30 @@
 #include "Queue.h"
 #include "alarm.h"
 
+typedef struct my_struct_tag {
+    pthread_mutex_t mutex;
+    int value;
+} my_struct_t;
+
+my_struct_t data = { PTHREAD_MUTEX_INITIALIZER , 0 };
+
+int threadMutexMain(int argc,const char* argv[])
+{
+    my_struct_t *data;
+    int status;
+    data = (my_struct_t*)malloc(sizeof(my_struct_t));
+    if (data == NULL) errno_abort("Allocate structure");
+	
+    status = pthread_mutex_init(&data->mutex, NULL);
+	if (status != 0 )
+        err_abort(status, "Init mutex");
+    status = pthread_mutex_destroy(&data->mutex);
+    if (status != 0)
+        err_abort(status, "Destory mutext");
+    free(data);
+    return status;
+}
+
 int threadMain(int argc,const char* argv[])
 {
     int status;
@@ -134,6 +158,7 @@ int main(int argc, const char * argv[]) {
 //    ret = queueMain(argc, argv);
 //    ret = threadMain(argc, argv);
     ret = threadJoinMain(argc,argv);
+    ret = threadMutexMain(argc,argv);
     return ret;
 }
 
