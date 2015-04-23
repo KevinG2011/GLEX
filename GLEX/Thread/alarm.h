@@ -15,7 +15,9 @@
 #include <pthread.h>
 
 typedef struct alarm {
+    struct alarm *link;
     int seconds;
+    time_t time; /* seconds from EPOCH */
     char message[64];
 } Alarm;
 

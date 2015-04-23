@@ -41,12 +41,57 @@ int threadMutexMain(int argc,const char* argv[])
     return status;
 }
 
+pthread_mutex_t alarm_mutex = PTHREAD_MUTEX_INITIALIZER;
+Alarm *alarm_list = NULL;
+
+void* threadMutexAlarm(void *arg)
+{
+    Alarm *alarm;
+    time_t sleep_time;
+    time_t now;
+    int status;
+    while (1) {
+        status = pthread_mutex_lock(&alarm_mutex);
+        if (status != 0) err_abort(status, "Lock mutex");
+        alarm = alarm_list;
+        if (alarm_list == NULL) sleep_time = 1;
+        else {
+            alarm_list = alarm->link;
+            now = time(NULL);
+            if (alarm->time <= now) sleep_time = 0;
+            else
+                sleep_time = alarm->time - now;
+#ifdef DEBUG
+            printf("[waiting: %ld(%ld)\"%s\"]\n",alarm->time,sleep_time,alarm->message);
+#endif
+        }
+        
+        status = pthread_mutex_unlock(&alarm_mutex);
+        if (status != 0) err_abort(status, "Unlock mutext");
+        if (sleep_time > 0) sleep((unsigned int)sleep_time);
+        else
+            sched_yield();
+        
+        if (alarm != NULL) {
+            printf("(%d) %s\n",alarm->seconds,alarm->message);
+            free(alarm);
+        }
+    }
+    
+    return NULL;
+}
+
 int threadMain(int argc,const char* argv[])
 {
     int status;
     char line[128];
-    Alarm *alarm;
+    Alarm *alarm, **last, *next;
+    
     pthread_t thread;
+    status = pthread_create(&thread, NULL,threadMutexAlarm, NULL);
+    if (status != 0) {
+        errno_abort("Create alarm thread");
+    }
     
     while (1) {
         printf("Alarm> ");
@@ -55,7 +100,7 @@ int threadMain(int argc,const char* argv[])
         
         alarm = (Alarm*)malloc(sizeof(Alarm));
         if (alarm == NULL) {
-            exit(EXIT_FAILURE);
+            errno_abort("Alloc Failed");
         }
         /*
          *	Parse input line into seconds (%d) and a message
@@ -63,15 +108,42 @@ int threadMain(int argc,const char* argv[])
          *	separated from the seconds by whitespace.
          */
         if (sscanf(line,"%d %64[^\n]",&alarm->seconds,alarm->message) < 2) {
-            fprintf(stderr, "Bad command\n");
+            errno_abort("Bad command\n");
             free(alarm);
         }
         else
         {
-            status = pthread_create(&thread, NULL,alarm_thread, alarm);
-            if (status != 0) {
-                fprintf(stderr, "Create alarm thread");
+            status = pthread_mutex_lock(&alarm_mutex);
+            if (status != 0) err_abort(status, "Lock mutex");
+            alarm->time = time(NULL) + alarm->seconds;
+            
+            last = &alarm_list;
+            next = *last;
+            while (next != NULL) {
+                if (next->time >= alarm->time) {
+                    alarm->link = next;
+                    *last = alarm;
+                    break;
+                }
+                last = &next->link;
+                next = next->link;
             }
+            
+            if (next == NULL) {
+                *last = alarm;
+                alarm->link = NULL;
+            }
+            
+#ifdef DEBUG
+            printf("[list: ");
+            for (next = alarm_list; next != NULL; next = next->link) {
+                printf("%ld(%ld)[\"%s\"] ",next->time,next->time - time(NULL),next->message);
+            }
+            printf("]\n");
+#endif
+            status = pthread_mutex_unlock(&alarm_mutex);
+            if (status != 0)
+                err_abort(status, "Unlock mutex");
         }
     }
     
