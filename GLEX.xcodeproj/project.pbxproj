@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A0F51A91ADA4F8500509298 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F51A71ADA4F8500509298 /* Queue.c */; };
 		2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A0F51AA1ADA4FA100509298 /* Tree.c */; };
+		2A6F2AE51AEA57C800881E4B /* alarm_cond.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F2AE31AEA57C800881E4B /* alarm_cond.c */; };
+		2A6F2AE81AEA57D800881E4B /* alarm_mutex.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F2AE61AEA57D800881E4B /* alarm_mutex.c */; };
+		2A6F2AEB1AEA5A5300881E4B /* alarm_join.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F2AE91AEA5A5300881E4B /* alarm_join.c */; };
 		2AAB177C1AE2382200692079 /* alarm.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AAB177A1AE2382200692079 /* alarm.c */; };
 		4C2A6C881AB5DDC00099D64C /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 4C2A6C871AB5DDC00099D64C /* main.c */; };
 		4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4CEE71ABEAEC600B64845 /* polygon.c */; };
@@ -32,6 +35,12 @@
 		2A0F51A81ADA4F8500509298 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		2A0F51AA1ADA4FA100509298 /* Tree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Tree.c; sourceTree = "<group>"; };
 		2A0F51AB1ADA4FA100509298 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		2A6F2AE31AEA57C800881E4B /* alarm_cond.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alarm_cond.c; sourceTree = "<group>"; };
+		2A6F2AE41AEA57C800881E4B /* alarm_cond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm_cond.h; sourceTree = "<group>"; };
+		2A6F2AE61AEA57D800881E4B /* alarm_mutex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alarm_mutex.c; sourceTree = "<group>"; };
+		2A6F2AE71AEA57D800881E4B /* alarm_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm_mutex.h; sourceTree = "<group>"; };
+		2A6F2AE91AEA5A5300881E4B /* alarm_join.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alarm_join.c; sourceTree = "<group>"; };
+		2A6F2AEA1AEA5A5300881E4B /* alarm_join.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm_join.h; sourceTree = "<group>"; };
 		2AAB177A1AE2382200692079 /* alarm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = alarm.c; sourceTree = "<group>"; };
 		2AAB177B1AE2382200692079 /* alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm.h; sourceTree = "<group>"; };
 		2AF23E8D1AE4CAF7005EF223 /* errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errors.h; sourceTree = "<group>"; };
@@ -70,6 +79,12 @@
 			children = (
 				2AAB177A1AE2382200692079 /* alarm.c */,
 				2AAB177B1AE2382200692079 /* alarm.h */,
+				2A6F2AE31AEA57C800881E4B /* alarm_cond.c */,
+				2A6F2AE41AEA57C800881E4B /* alarm_cond.h */,
+				2A6F2AE61AEA57D800881E4B /* alarm_mutex.c */,
+				2A6F2AE71AEA57D800881E4B /* alarm_mutex.h */,
+				2A6F2AE91AEA5A5300881E4B /* alarm_join.c */,
+				2A6F2AEA1AEA5A5300881E4B /* alarm_join.h */,
 			);
 			path = Thread;
 			sourceTree = "<group>";
@@ -163,8 +178,11 @@
 			files = (
 				2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */,
 				4C2A6C881AB5DDC00099D64C /* main.c in Sources */,
+				2A6F2AE51AEA57C800881E4B /* alarm_cond.c in Sources */,
 				2A0F51A91ADA4F8500509298 /* Queue.c in Sources */,
 				2AAB177C1AE2382200692079 /* alarm.c in Sources */,
+				2A6F2AEB1AEA5A5300881E4B /* alarm_join.c in Sources */,
+				2A6F2AE81AEA57D800881E4B /* alarm_mutex.c in Sources */,
 				4CD4CEEC1ABEAEEB00B64845 /* line.c in Sources */,
 				4CD4CEE91ABEAEC600B64845 /* polygon.c in Sources */,
 			);
