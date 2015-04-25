@@ -37,4 +37,7 @@ bool itemEnQueue(Queue* queue,Item item);
 bool DeQueue(Queue* queue);
 void clearQueue(Queue* queue);
 
+/* Queue main test */
+int queueMain(int argc,const char* argv[]);
+
 #endif /* defined(__GLEX__Queue__) */

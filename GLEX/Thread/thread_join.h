@@ -9,7 +9,7 @@
 #ifndef __GLEX__thread_join__
 #define __GLEX__thread_join__
 
-#include <stdio.h>
+
 #include "alarm.h"
 #include "errors.h"
 

@@ -110,5 +110,37 @@ void clearQueue(Queue* queue)
 }
 
 
-
+int queueMain(int argc,const char* argv[])
+{
+    Queue queue;
+    Item tmp;
+    char ch;
+    
+    initQueue(&queue);
+    puts("Testing the Queue interface. Type a to add a value.");
+    puts("type d to delete a value , and type q quit");
+    while ((ch = getchar()) != 'q') {
+        if (ch != 'a' && ch != 'd') {
+            continue;
+        }
+        
+        if (ch == 'a') {
+            printf("Integer to add: ");
+            scanf("%d",&tmp);
+            itemEnQueue(&queue, tmp);
+        }
+        else
+        {
+            DeQueue(&queue);
+        }
+        
+        printf("%zu items in queue\n",itemCountQueue(&queue));
+        puts("Type a to add. d to delete. q to quit :");
+    }
+    
+    clearQueue(&queue);
+    puts("Bye!");
+    
+    return 0;
+}
 

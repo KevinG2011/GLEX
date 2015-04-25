@@ -8,47 +8,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <GLUT/GLUT.h>
+
 #include "line.h"
 #include "Queue.h"
 
 #include "thread_join.h"
 #include "thread_trylock.h"
-
-int queueMain(int argc,const char* argv[])
-{
-    Queue queue;
-    Item tmp;
-    char ch;
-    
-    initQueue(&queue);
-    puts("Testing the Queue interface. Type a to add a value.");
-    puts("type d to delete a value , and type q quit");
-    while ((ch = getchar()) != 'q') {
-        if (ch != 'a' && ch != 'd') {
-            continue;
-        }
-        
-        if (ch == 'a') {
-            printf("Integer to add: ");
-            scanf("%d",&tmp);
-            itemEnQueue(&queue, tmp);
-        }
-        else
-        {
-            DeQueue(&queue);
-        }
-        
-        printf("%zu items in queue\n",itemCountQueue(&queue));
-        puts("Type a to add. d to delete. q to quit :");
-    }
-    
-    clearQueue(&queue);
-    puts("Bye!");
-    
-    return 0;
-}
+#include "thread_deadlock.h"
 
 GLsizei winWidth = 600, winHeight = 500;
 
@@ -73,7 +40,8 @@ int main(int argc, const char * argv[]) {
 //    ret = glMain(argc, argv);
 //    ret = queueMain(argc, argv);
 //    ret = threadMain(argc, argv);
-    ret = joinMain(argc,argv);
+//    ret = joinMain(argc,argv);
+    ret = deadlockMain(argc, argv);
     return ret;
 }
 
