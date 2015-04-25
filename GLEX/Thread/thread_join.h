@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 李佳. All rights reserved.
 //
 
-#ifndef __GLEX__alarm_join__
-#define __GLEX__alarm_join__
+#ifndef __GLEX__thread_join__
+#define __GLEX__thread_join__
 
 #include <stdio.h>
 #include "alarm.h"
