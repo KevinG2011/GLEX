@@ -10,5 +10,8 @@
 #define __GLEX__alarm_cond__
 
 #include <stdio.h>
+#include "alarm.h"
+#include "errors.h"
 
+int condMain(int argc, const char * argv[]);
 #endif /* defined(__GLEX__alarm_cond__) */

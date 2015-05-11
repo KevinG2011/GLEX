@@ -36,7 +36,7 @@ int glMain(int argc,const char* argv[])
 }
 
 int main(int argc, const char * argv[]) {
-    int ret = 0;
+    int ret;
 //    ret = glMain(argc, argv);
 //    ret = queueMain(argc, argv);
 //    ret = threadMain(argc, argv);
