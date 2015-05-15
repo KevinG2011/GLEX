@@ -14,4 +14,5 @@
 #include "errors.h"
 
 int mutexMain(int argc, const char * argv[]);
+void alarm_insert(Alarm *alarm);
 #endif /* defined(__GLEX__alarm_mutex__) */

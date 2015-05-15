@@ -21,6 +21,6 @@ typedef struct alarm {
     char message[64];
 } Alarm;
 
-void* alarm_thread(void* arg);
+//void* alarm_thread(void* arg);
 
 #endif /* defined(__GLEX__alarm__) */

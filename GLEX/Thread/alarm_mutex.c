@@ -9,9 +9,11 @@
 #include "alarm_mutex.h"
 
 pthread_mutex_t alarm_mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t alarm_cond = PTHREAD_COND_INITIALIZER;
 Alarm *alarm_list = NULL;
+time_t current_alarm = 0;
 
-void* threadMutexAlarm(void *arg)
+void* alarm_thread(void *arg)
 {
     Alarm *alarm;
     time_t sleep_time;
@@ -48,13 +50,51 @@ void* threadMutexAlarm(void *arg)
     return NULL;
 }
 
+void alarm_insert(Alarm *alarm)
+{
+    int status;
+    Alarm **last,*next;
+    last = &alarm_list;
+    next = *last;
+    while (next != NULL) {
+        if (next->time >= alarm->time) {
+            alarm = next->link;
+            *last = alarm;
+            break;
+        }
+    }
+    
+    if (next == NULL) {
+        *last = alarm;
+        alarm->link = NULL;
+    }
+    
+#ifdef DEBUG
+    printf("[list: ");
+    for (next = alarm_list; next != NULL; next = next->link) {
+        printf("%ld(%ld)[\"%s\"] ",next->time,next->time - time(NULL),next->message);
+    }
+    printf("]\n");
+#endif
+    
+    if (current_alarm == 0 || alarm->time < current_alarm) {
+        current_alarm = alarm->time;
+        status = pthread_cond_signal(&alarm_cond);
+        if (status != 0) {
+            err_abort(status, "Signal cond");
+        }
+        
+        
+    }
+}
+
 int mutexMain(int argc, const char * argv[]) {
     int status;
     char line[128];
     Alarm *alarm, **last, *next;
     
     pthread_t thread;
-    status = pthread_create(&thread, NULL,threadMutexAlarm, NULL);
+    status = pthread_create(&thread, NULL,alarm_thread, NULL);
     if (status != 0) {
         errno_abort("Create alarm thread");
     }

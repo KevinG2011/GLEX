@@ -8,15 +8,15 @@
 
 #include "alarm.h"
 
-void* alarm_thread(void* arg)
-{
-    Alarm * alarm = (Alarm*)arg;
-    int status = pthread_detach(pthread_self());
-    if (status != 0) {
-        fprintf(stderr,"Detach thread");
-    }
-    sleep(alarm->seconds);
-    printf("(%d) %s\n",alarm->seconds,alarm->message);
-    free(alarm);
-    return NULL;
-}
+//void* alarm_thread(void* arg)
+//{
+//    Alarm * alarm = (Alarm*)arg;
+//    int status = pthread_detach(pthread_self());
+//    if (status != 0) {
+//        fprintf(stderr,"Detach thread");
+//    }
+//    sleep(alarm->seconds);
+//    printf("(%d) %s\n",alarm->seconds,alarm->message);
+//    free(alarm);
+//    return NULL;
+//}
