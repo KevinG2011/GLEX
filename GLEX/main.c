@@ -16,6 +16,7 @@
 #include "thread_join.h"
 #include "thread_trylock.h"
 #include "thread_deadlock.h"
+#include "thread_wait.h"
 
 GLsizei winWidth = 600, winHeight = 500;
 
@@ -41,7 +42,8 @@ int main(int argc, const char * argv[]) {
 //    ret = queueMain(argc, argv);
 //    ret = threadMain(argc, argv);
 //    ret = joinMain(argc,argv);
-    ret = deadlockMain(argc, argv);
+//    ret = deadlockMain(argc, argv);
+    ret = waitMain(argc, argv);
     return ret;
 }
 
