@@ -16,34 +16,53 @@ time_t current_alarm = 0;
 void* alarm_thread(void *arg)
 {
     Alarm *alarm;
-    time_t sleep_time;
+    struct timespec cond_time;
     time_t now;
-    int status;
+    int status,expired;
+    status = pthread_mutex_lock(&alarm_mutex);
+    if (status != 0) err_abort(status, "Lock mutex");
+    
     while (1) {
-        status = pthread_mutex_lock(&alarm_mutex);
-        if (status != 0) err_abort(status, "Lock mutex");
-        alarm = alarm_list;
-        if (alarm_list == NULL) sleep_time = 1;
-        else {
+        current_alarm = 0;
+        
+        while (alarm_list == NULL) {
+            status = pthread_cond_wait(&alarm_cond, &alarm_mutex);
+            if (status != 0) err_abort(status, "Wait on cond");
+            
+            alarm = alarm_list;
             alarm_list = alarm->link;
             now = time(NULL);
-            if (alarm->time <= now) sleep_time = 0;
-            else
-                sleep_time = alarm->time - now;
+            expired = 0;
+            if (alarm->time > now) {
 #ifdef DEBUG
-            printf("[waiting: %ld(%ld)\"%s\"]\n",alarm->time,sleep_time,alarm->message);
+                printf("[waiting: %ld(%ld)\"%s\"]\n",alarm->time,alarm->time - time(NULL),alarm->message);
 #endif
-        }
-        
-        status = pthread_mutex_unlock(&alarm_mutex);
-        if (status != 0) err_abort(status, "Unlock mutext");
-        if (sleep_time > 0) sleep((unsigned int)sleep_time);
-        else
-            sched_yield();
-        
-        if (alarm != NULL) {
-            printf("(%d) %s\n",alarm->seconds,alarm->message);
-            free(alarm);
+                cond_time.tv_sec = alarm->time;
+                cond_time.tv_nsec = 0;
+                current_alarm = alarm->time;
+                
+                while (1) {
+                    status = pthread_cond_timedwait(&alarm_cond, &alarm_mutex, &cond_time);
+                    if (status == ETIMEDOUT) {
+                        expired = 1;
+                        break;
+                    }
+                    if (status != 0) {
+                        err_abort(status, "Cond timedwait");
+                    }
+                }
+                
+                if (!expired) {
+                    alarm_insert(alarm);
+                }
+            } else
+                expired = 1;
+            
+            if (expired) {
+                printf("(%d) %s\n",alarm->seconds,alarm->message);
+                current_alarm = alarm_list == NULL ? 0 : alarm_list->time;
+                free(alarm);
+            }
         }
     }
     
@@ -83,15 +102,13 @@ void alarm_insert(Alarm *alarm)
         if (status != 0) {
             err_abort(status, "Signal cond");
         }
-        
-        
     }
 }
 
 int mutexMain(int argc, const char * argv[]) {
     int status;
     char line[128];
-    Alarm *alarm, **last, *next;
+    Alarm *alarm;
     
     pthread_t thread;
     status = pthread_create(&thread, NULL,alarm_thread, NULL);
@@ -116,37 +133,13 @@ int mutexMain(int argc, const char * argv[]) {
         if (sscanf(line,"%d %64[^\n]",&alarm->seconds,alarm->message) < 2) {
             errno_abort("Bad command\n");
             free(alarm);
-        }
-        else
-        {
+        } else {
             status = pthread_mutex_lock(&alarm_mutex);
             if (status != 0) err_abort(status, "Lock mutex");
+            
             alarm->time = time(NULL) + alarm->seconds;
+            alarm_insert(alarm);
             
-            last = &alarm_list;
-            next = *last;
-            while (next != NULL) {
-                if (next->time >= alarm->time) {
-                    alarm->link = next;
-                    *last = alarm;
-                    break;
-                }
-                last = &next->link;
-                next = next->link;
-            }
-            
-            if (next == NULL) {
-                *last = alarm;
-                alarm->link = NULL;
-            }
-            
-#ifdef DEBUG
-            printf("[list: ");
-            for (next = alarm_list; next != NULL; next = next->link) {
-                printf("%ld(%ld)[\"%s\"] ",next->time,next->time - time(NULL),next->message);
-            }
-            printf("]\n");
-#endif
             status = pthread_mutex_unlock(&alarm_mutex);
             if (status != 0)
                 err_abort(status, "Unlock mutex");

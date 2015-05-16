@@ -17,6 +17,7 @@
 #include "thread_trylock.h"
 #include "thread_deadlock.h"
 #include "thread_wait.h"
+#include "alarm_mutex.h"
 
 GLsizei winWidth = 600, winHeight = 500;
 
@@ -43,7 +44,8 @@ int main(int argc, const char * argv[]) {
 //    ret = threadMain(argc, argv);
 //    ret = joinMain(argc,argv);
 //    ret = deadlockMain(argc, argv);
-    ret = waitMain(argc, argv);
+//    ret = waitMain(argc, argv);
+    ret = mutexMain(argc,argv);
     return ret;
 }
 
