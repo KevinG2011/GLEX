@@ -18,6 +18,7 @@
 #include "thread_deadlock.h"
 #include "thread_wait.h"
 #include "alarm_mutex.h"
+#include "thread_pipe.h"
 
 GLsizei winWidth = 600, winHeight = 500;
 
@@ -45,7 +46,7 @@ int main(int argc, const char * argv[]) {
 //    ret = joinMain(argc,argv);
 //    ret = deadlockMain(argc, argv);
 //    ret = waitMain(argc, argv);
-    ret = mutexMain(argc,argv);
+    ret = pipeMain(argc,argv);
     return ret;
 }
 
