@@ -16,6 +16,7 @@
 		2A6F2AF21AEB856C00881E4B /* thread_deadlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A6F2AF01AEB856C00881E4B /* thread_deadlock.c */; };
 		2AAB177C1AE2382200692079 /* alarm.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AAB177A1AE2382200692079 /* alarm.c */; };
 		2AAB2D141B0B349600FAEB16 /* thread_pipe.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AAB2D121B0B349600FAEB16 /* thread_pipe.c */; };
+		2AAB2D171B0C95FA00FAEB16 /* thread_crew.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AAB2D151B0C95FA00FAEB16 /* thread_crew.c */; };
 		2ADA4AEE1B04AAC700F37806 /* thread_wait.c in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA4AEC1B04AAC700F37806 /* thread_wait.c */; };
 		2ADA4AF41B05F1E200F37806 /* line.c in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA4AF01B05F1E200F37806 /* line.c */; };
 		2ADA4AF51B05F1E200F37806 /* polygon.c in Sources */ = {isa = PBXBuildFile; fileRef = 2ADA4AF21B05F1E200F37806 /* polygon.c */; };
@@ -53,6 +54,8 @@
 		2AAB177B1AE2382200692079 /* alarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alarm.h; sourceTree = "<group>"; };
 		2AAB2D121B0B349600FAEB16 /* thread_pipe.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = thread_pipe.c; sourceTree = "<group>"; };
 		2AAB2D131B0B349600FAEB16 /* thread_pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_pipe.h; sourceTree = "<group>"; };
+		2AAB2D151B0C95FA00FAEB16 /* thread_crew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = thread_crew.c; sourceTree = "<group>"; };
+		2AAB2D161B0C95FA00FAEB16 /* thread_crew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_crew.h; sourceTree = "<group>"; };
 		2ADA4AEC1B04AAC700F37806 /* thread_wait.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = thread_wait.c; sourceTree = "<group>"; };
 		2ADA4AED1B04AAC700F37806 /* thread_wait.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread_wait.h; sourceTree = "<group>"; };
 		2ADA4AF01B05F1E200F37806 /* line.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = line.c; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				2AAB177B1AE2382200692079 /* alarm.h */,
 				2A6F2AE31AEA57C800881E4B /* alarm_cond.c */,
 				2A6F2AE41AEA57C800881E4B /* alarm_cond.h */,
+				2AAB2D151B0C95FA00FAEB16 /* thread_crew.c */,
+				2AAB2D161B0C95FA00FAEB16 /* thread_crew.h */,
 				2AAB2D121B0B349600FAEB16 /* thread_pipe.c */,
 				2AAB2D131B0B349600FAEB16 /* thread_pipe.h */,
 				2A6F2AE61AEA57D800881E4B /* alarm_mutex.c */,
@@ -204,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AAB2D171B0C95FA00FAEB16 /* thread_crew.c in Sources */,
 				2A0F51AC1ADA4FA100509298 /* Tree.c in Sources */,
 				4C2A6C881AB5DDC00099D64C /* main.c in Sources */,
 				2ADA4AF51B05F1E200F37806 /* polygon.c in Sources */,
